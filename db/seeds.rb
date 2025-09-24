@@ -28,9 +28,9 @@ more_movies = [
 
   # {:title => 'CODA', :rating => 'PG-13', :release_date => '13-Aug-2021'}
 
-  {:title => 'Robocop', :rating=>'R', :release_date=>'17-Jul-1987'}
+  {:title => 'Robocop', :rating=>'R', :release_date=>'17-Jul-1987'},
 
-  {:title=>'American Gangster', :rating=>'R', :release_date=>'19-Oct-2007'}
+  {:title=>'American Gangster', :rating=>'R', :release_date=>'19-Oct-2007'},
 
   {:title=>"toy Story 3", :rating=>'G', :release_date=>'18-Jun-2010'}
 
