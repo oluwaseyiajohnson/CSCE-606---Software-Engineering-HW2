@@ -17,6 +17,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 more_movies = [
+
   {:title => 'My Neighbor Totoro', :rating => 'G',
     :release_date => '16-Apr-1988'},
   {:title => 'Green Book', :rating => 'PG-13',
@@ -27,7 +28,11 @@ more_movies = [
     :release_date => '19-Feb-2021'},
   {:title => 'CODA', :rating => 'PG-13',
     :release_date => '13-Aug-2021'}
+    
 ]
+
 more_movies.each do |movie|
+
   Movie.create!(movie)
+
 end
