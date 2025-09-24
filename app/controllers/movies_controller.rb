@@ -2,9 +2,27 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies or /movies.json
-  def index
-    @movies = Movie.all
+
+    def clicked
+    
+    render json: {status: "ok"}
   end
+def index
+  column = (params[:sort] || session[:last_column] || "title")
+
+  if session[:last_column] == column
+    direction = (session[:direction]).to_sym == :asc ? :desc : :asc
+  else
+    direction = :asc
+  end
+
+  session[:last_column] = column
+  session[:direction] = direction
+
+  @movies = Movie.order(column => direction)
+end
+
+
 
   # GET /movies/1 or /movies/1.json
   def show

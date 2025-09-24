@@ -8,25 +8,25 @@
   <table>
     <thead>
       <tr>
-        <th>title</th>
-        <th>rating</th>
-        <th>release date</th>
+        <th><%= link_to "Title" , movies_path(sort: "title") %></th>
+        <th><%= link_to "Rating" , movies_path(:sort=> "rating") %></th>
+        <th><%= link_to "Release_date" , movies_path(:sort=> "release_date") %></th>
       </tr>
     </thead>
     <tbody>
       <% @movies.each do |movie| %>
       <tr>
-        <th> <%= movie.title%> </th>
-        <th> <%= movie.rating%> </th>
-        <th> <%= movie.release_date%> </th>
+        <td> <%= movie.title%> </th>
+        <td> <%= movie.rating%> </th>
+        <td> <%= movie.release_date.to_date%> </th>
       </tr>
     <% end %>
     </tbody>
     <tfoot>
       <tr>
-        <th>Place Holder</th>
-        <th>Place Holder</th>
-        <th>Place Holder</th>
+        <th><%= Movie.count%></th>
+        <th><%=Movie.group(:rating).order('count_id DESC').count(:id).first%></th>
+        <th><%=Movie.average(:release_date)%></th>
       </tr>
     </tfoot>
   
