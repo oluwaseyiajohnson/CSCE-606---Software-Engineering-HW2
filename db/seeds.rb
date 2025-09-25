@@ -18,26 +18,29 @@
 #   end
 more_movies = [
 
-  # {:title => 'My Neighbor Totoro', :rating => 'G', :release_date => '16-Apr-1988'},
+  {:title => 'My Neighbor Totoro', :rating => 'G', :release_date => '16-Apr-1988'},
 
-  # {:title => 'Green Book', :rating => 'PG-13', :release_date => '16-Nov-2018'},
+  {:title => 'Green Book', :rating => 'PG-13', :release_date => '16-Nov-2018'},
 
-  # {:title => 'Parasite', :rating => 'R', :release_date => '30-May-2019'},
+  {:title => 'Parasite', :rating => 'R', :release_date => '30-May-2019'},
 
-  # {:title => 'Nomadland', :rating => 'R', :release_date => '19-Feb-2021'},
+  {:title => 'Nomadland', :rating => 'R', :release_date => '19-Feb-2021'},
 
-  # {:title => 'CODA', :rating => 'PG-13', :release_date => '13-Aug-2021'}
+  {:title => 'CODA', :rating => 'PG-13', :release_date => '13-Aug-2021'}
 
-  {:title => 'Robocop', :rating=>'R', :release_date=>'17-Jul-1987'},
+  {:title => 'Robocop', :rating =>'R', :release_date =>'17-Jul-1987'},
 
-  {:title=>'American Gangster', :rating=>'R', :release_date=>'19-Oct-2007'},
+  {:title =>'American Gangster', :rating =>'R', :release_date =>'19-Oct-2007'},
 
-  {:title=>"toy Story 3", :rating=>'G', :release_date=>'18-Jun-2010'}
+  {:title =>"toy Story 3", :rating =>'G', :release_date =>'18-Jun-2010'}
 
 ]
 
 more_movies.each do |movie|
 
-  Movie.create!(movie)
+  Movie.find_or_create_by(title: movie[:title] ) do |input|
+    input.rating = movie[:rating]
+    input.release_date = movie[:release_date]
+  end
 
 end
