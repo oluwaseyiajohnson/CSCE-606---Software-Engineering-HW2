@@ -34,6 +34,8 @@ more_movies = [
 
   {:title =>"toy Story 3", :rating =>'G', :release_date =>'18-Jun-2010'}
 
+  {:title => "Made up Movie", :rating=>'Test', :release_date=>'01-Jan-2000'}
+
 ]
 
 more_movies.each do |movie|
