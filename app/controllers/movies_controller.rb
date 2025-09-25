@@ -73,6 +73,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.expect(movie: [ :title, :rating, :description, :release_date ])
-    end
+    params.require(:movie).permit(:title, :rating, :description, :release_date)
+  end
 end
