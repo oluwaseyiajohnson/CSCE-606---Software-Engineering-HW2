@@ -1,26 +1,15 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
-  # GET /movies or /movies.json
-
-    def clicked
-    
-    render json: {status: "ok"}
-  end
 def index
-  column = (params[:sort] || session[:last_column] || "title")
+  @preference = Preference.first_or_create(last_column: "title", direction: "asc")
+  column = params[:sort] || @preference.last_column
+  direction = params[:direction] || @preference.direction
+  @preference.update(last_column: column, direction: direction)
 
-  if session[:last_column] == column
-    direction = (session[:direction]).to_sym == :asc ? :desc : :asc
-  else
-    direction = :asc
-  end
-
-  session[:last_column] = column
-  session[:direction] = direction
-
-  @movies = Movie.order(column => direction)
+  @movies = Movie.order(column => direction.to_sym)
 end
+
 
 
 
@@ -30,6 +19,7 @@ end
 
   # GET /movies/new
   def new
+    @preference = Preference.new
     @movie = Movie.new
   end
 

@@ -7,21 +7,22 @@
 <div id="movies">
   <table>
     <thead>
-      <tr>
-        <th><%= link_to "Title" , movies_path(sort: "title") %></th>
-        <th><%= link_to "Rating" , movies_path(:sort=> "rating") %></th>
-        <th><%= link_to "Release_date" , movies_path(:sort=> "release_date") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @movies.each do |movie| %>
-      <tr>
-        <td> <%= movie.title%> </th>
-        <td> <%= movie.rating%> </th>
-        <td> <%= movie.release_date.to_date%> </th>
-      </tr>
-    <% end %>
-    </tbody>
+  <tr>
+    <%= sort_column("Title", "title", @preference) %>
+    <%= sort_column("Rating", "rating", @preference) %>
+    <%= sort_column("Release Date", "release_date", @preference) %>
+  </tr>
+</thead>
+<tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td class="<%= 'main' if @preference.last_column == 'title' %>"><%= movie.title %></td>
+      <td class="<%= 'main' if @preference.last_column == 'rating' %>"><%= movie.rating %></td>
+      <td class="<%= 'main' if @preference.last_column == 'release_date' %>"><%= movie.release_date.to_date %></td>
+    </tr>
+  <% end %>
+</tbody>
+
     <tfoot>
       <tr>
         <th><%= Movie.count%></th>

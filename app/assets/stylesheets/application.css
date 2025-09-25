@@ -8,3 +8,33 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+tr:nth-child(even){ background-color: #F3F3F3;}
+tr{
+    border-bottom: 3px solid;
+    border-top: 3px solid;
+
+}
+
+
+body {
+    font-size: large;
+    color: black;
+}
+thead{
+    background-color: #dad3c8;
+}
+
+th.main{
+    background-color: #beb7ac;
+}
+td.main{
+    background-color: #f3f1f1;
+    min-width: 100px;
+    color: black;
+}
+
+tr:nth-child(even) td.main { background-color: #c4c3c3;}
+
+tr:hover {background-color: #94d2ec;}
+tr:hover td.main {background-color: #94d2ec;}
+
